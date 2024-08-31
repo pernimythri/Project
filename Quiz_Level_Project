@@ -1,0 +1,141 @@
+import random
+import time
+players=int(input("Enter no.of players "))
+player_scores=[0 for _ in range((players))]
+for player_index in range(players):
+    print(" player number " , player_index+1," turn has just started! ")
+    print("*****  welcome to computer quiz  *****")
+    playing=input("Are you Willing to play or quit: click p for playing game and q for quit ").lower()
+    if playing=="q":
+        print("ok!,bye")
+        continue
+    start_time=time.time()
+    print(">>>>>  ok! lets begin the game")
+    print(">>> HERE ARE THE INSTRUCTIONS ")
+    print("(1) This game consists of 3 levels"+"\n"+ "(2)each level consists of 3 questions"+"\n"+"(3)each question carries 50 marks")
+    print("(4) you can enter into other levels,when your current level score is greater than 50 marks..if your score less than 50,you loose the game")
+    print("If you score more than 50 marks also..you have to complete answering all questions ")
+    print("Because your total score will help you in getting benefits")
+    print("(5)if u win  level 2,u can get gold medal,gold medal is also used in 3rd level whenever u are going to loose the game")
+    print("(6)If you win all levels--then there is a gift for you and we can display in how much time you compleated your quiz")
+    score=0
+    print("*****  ok! let's begin level-1  *****")
+    ans=input(">>  what is the full of cpu ").lower()
+    if ans=="central processing unit":
+        score+=50
+        print("you got 50 marks")
+    else:
+        print("u loose 50 marks,better luck next time")
+    ans=input(">>  what is full of ALU ").lower()
+    if ans=="arithematic logical unit":
+        score+=50
+        print("congrats, you got "+ str(score)+ "marks")
+    else:
+        print("u loose 50 marks,better luck next time")
+    ans=input(">>  What is full form of PSU ").lower()
+    if ans=="power supply unit":
+        score+=50
+        print("@@ congrats you got " + str(score) + "marks  @@")
+        print("**********************************************")
+
+    else:
+        print("you loose 50 marks,better luck next time")
+    level1=score
+    if score<=50:
+        print("you loose the game")
+        continue
+    else:
+        print("HURRAY!, you won level-1")
+        print("*****  lets's begin level-2  *****"+"\n"+"here,you have to write yes/no only")
+    ans=input(">> Is python supports to add two strings? ").lower()
+    score=0
+    if ans=="yes":
+        score += 50
+        print("you got 50 marks")
+        print("your total score is" + str(score) + "marks")
+    else:
+        print("you loose 50 marks!,better luck next time")
+    ans = input(">>  IS python is compiled based language? ").lower()
+    if ans=="no":
+        score+=50
+        print("your total score is"+str(score)+"marks")
+    else:
+        print("you lost 50 marks")
+    ans=input(">>  Is python is dynamically typed language? ").lower()
+    if ans=="yes":
+        score+=50
+        print("your total score is" + str(score) +"marks")
+    else:
+        print("you lost 50 marks")
+    level2=score
+    gold=0
+    if score <= 50:
+        print("you loose the game")
+        continue
+    else:
+        print("HURRAY!, you won level-2")
+        print("***** you won gold medal *****")
+        print("*********************************************")
+        gold=1
+        print("*****  lets's begin level-3  ******")
+        print(">> What is the output of following:")
+        print("for i in range(2):"+"\n"+"    print(str('*') * i)")
+        ans=input("Enter your output ")
+        score=0
+        if ans=='*':
+            print("you got it!")
+            score += 50
+            print("your  score is" + str(score) + " marks")
+        else:
+            print("you lost 50 marks,better luck next time")
+        print(">> Give output for the following  question")
+        print("k=2,3,4,2,4,7,3")
+        print("print(set(k))")
+        ans=input("enter output in ascending order: ")
+        if ans=="{2,3,4,7}":
+            score+=50
+            print("you got it!,your total score is "+ str(score)+" marks")
+        else:
+            print("you lost 50 marks,Better luck next time")
+        print(">>  This is your last question,All the best!")
+        print(">> How can you add two strings"+"\n"+"(1)join()"+"\n"+"(2)add()")
+        value=input("Enter 1 or 2 ")
+        if value=="1":
+            print("you got 50 marks")
+            score+=50
+            print("your score is "+ str(score) +"marks")
+        else:
+            print("you lost 50 marks")
+
+        end_time=time.time()
+        time_taken=round(end_time-start_time,2)
+        print("you have compleated in ",time_taken, "seconds")
+        level3=score
+        total_score=level1+level2+level3
+        print(">>> your total score after quiz is: "+str(total_score))
+        if score>50  or gold==1:
+            print("CONGRATULATIONS!!! "+ "YOU WON GAME!!!"+" Your are now Ready to know your gift")
+            print("Due to winning game,our industry giving you $5000 and you got "+ str(total_score)  + " marks  which  will added as money to your $5000")
+            score=total_score + 5000
+            print(" ********** you won " + "$"+str(score)+ "**********")
+            print(">> You can use that money in buying random books in our app or we can transfer money to your account")
+            choose=input("Enter your choice "  + "\n" + "(1) BUY" + "\n" + "(2) TRANSFER ")
+            if choose=="1":
+                print("ok!,Here are the list of books")
+                book=["C","PYTHON","JAVA","HTML","DATA STRUCTURES"]
+                print(book)
+                random=random.randint(0,4)
+                print("On random selection you got " +  book[random]  + " book")
+                print("###### THANK YOU  ######")
+            if choose=="2":
+                print(">>> OK! Give the following details, to send money to your bank")
+                account=input("Enter your account number ")
+                print(">>> Well! we will send money to your account within 24 hours  If there is any problems regarding your account number then we make you SMS ")
+                print(">>> If there is any problem with your phone number then you loose money")
+                while True:
+                    phone_number=input(">> give your phone number to send SMS ")
+                    if len(phone_number)<10 or len(phone_number)>10:
+                        print(">> Invalid phone number,try again")
+                    else:
+                        print("....THANK YOU ..... :) :) :)")
+                        break
